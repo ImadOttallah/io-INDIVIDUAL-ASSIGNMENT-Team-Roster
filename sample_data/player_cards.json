@@ -1,0 +1,23 @@
+{
+  "-MiBsfuTafbEQ7eAULxV" : {
+    "id" : "-MiBsfuTafbEQ7eAULxV",
+    "imageUrl" : "https://i.pinimg.com/736x/5c/06/ea/5c06ea850ff17c7678f16eea396812e3--bahamas-beach-world-cup.jpg",
+    "name" : "john",
+    "position" : "quarterback",
+    "uid": ""
+  },
+  "-MiBt86VzkC-EGmJnxjm" : {
+    "id" : "-MiBt86VzkC-EGmJnxjm",
+    "imageUrl" : "https://i.pinimg.com/736x/5c/06/ea/5c06ea850ff17c7678f16eea396812e3--bahamas-beach-world-cup.jpg",
+    "name" : "pete",
+    "position" : "reciever",
+    "uid": ""
+  },
+  "-MiBtwf1BwN9pGavQeR3" : {
+    "id" : "-MiBtwf1BwN9pGavQeR3",
+    "imageUrl" : "https://i.pinimg.com/736x/5c/06/ea/5c06ea850ff17c7678f16eea396812e3--bahamas-beach-world-cup.jpg",
+    "name" : "mark",
+    "position" : "linebacker",
+    "uid": ""
+  }
+}
