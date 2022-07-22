@@ -30,23 +30,29 @@ const createPlayer = (playerObj) => new Promise((resolve, reject) => {
 
 // FIXME: DELETE PLAYER
 const deleteSinglePlayer = (firebaseKey, uid) => new Promise((resolve, reject) => {
-  axios.delete(`${dbUrl}/authors/${firebaseKey}.json`)
+  axios.delete(`${dbUrl}/players/${firebaseKey}.json`)
     .then(() => {
-      getPlayers(uid).then((authorArray) => resolve(authorArray));
+      getPlayers(uid).then((playerArray) => resolve(playerArray));
     })
     .catch((error) => reject(error));
 });
 
 // FIXME: UPDATE PLAYER
-const updatePlayers = (playerObject) => new Promise((resolve, reject) => {
+const updatePlayer = (playerObject) => new Promise((resolve, reject) => {
   axios.patch(`${dbUrl}/players/${playerObject.firebaseKey}.json`, playerObject)
     .then(() => getPlayers(playerObject.uid).then(resolve))
+    .catch(reject);
+});
+const getSinglePlayer = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/players/${firebaseKey}.json`)
+    .then((response) => resolve(response.data))
     .catch(reject);
 });
 
 export {
   getPlayers,
+  getSinglePlayer,
   deleteSinglePlayer,
-  updatePlayers,
+  updatePlayer,
   createPlayer,
 };
