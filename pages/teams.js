@@ -15,7 +15,7 @@ export default function Players() {
   return (
     <div className="text-center my-4">
       {players.map((player) => (
-        <PlayerCard key={players.firebaseKey} playerObj={player} onUpdate={getAllThePlayers} />
+        <PlayerCard key={player.firebaseKey} playerObj={player} onUpdate={getAllThePlayers} />
       ))}
     </div>
   );
