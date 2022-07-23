@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-// import Link from 'next/link';
+import Link from 'next/link';
 import { deleteSinglePlayer } from '../api/playerData';
 
 export default function PlayerCard({ playerObj, onUpdate }) {
@@ -17,9 +17,9 @@ export default function PlayerCard({ playerObj, onUpdate }) {
         <div>name: {playerObj.name}</div>
         <div>position: {playerObj.position}</div>
         <div>position: {playerObj.imageUrl}</div>
-        {/* <Link href={`/team/edit/${playerObj.firebaseKey}`} passHref>
+        <Link href={`/team/edit/${playerObj.firebaseKey}`} passHref>
           <Button variant="info">UPDATE</Button>
-        </Link> */}
+        </Link>
         <Button variant="danger" onClick={deleteThisPlayer} className="m-2">
           DELETE
         </Button>
