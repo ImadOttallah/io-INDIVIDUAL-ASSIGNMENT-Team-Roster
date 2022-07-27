@@ -4,20 +4,17 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
-import { createPlayer, updatePlayer } from '../../api/playerData';
+import { createTeams, updateTeams } from '../../api/teamData';
 import { useAuth } from '../../utils/context/authContext';
 
 const initalState = {
-  name: '',
-  position: '',
-  imageUrl: '',
+  teamname: '',
+  image: '',
 };
-
-function PlayerForm({ obj }) {
+function TeamForm({ obj }) {
   const [formInput, setFormInput] = useState(initalState);
   const router = useRouter();
   const { user } = useAuth();
-
   useEffect(() => {
     if (obj.firebaseKey) setFormInput(obj);
   }, [obj, user]);
@@ -32,51 +29,40 @@ function PlayerForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updatePlayer(formInput)
-        .then(() => router.push(`/players/${obj.firebaseKey}`));
+      updateTeams(formInput)
+        .then(() => router.push(`/teamz/${obj.firebaseKey}`));
     } else {
       const payload = { ...formInput, uid: user.uid };
-      createPlayer(payload).then(() => {
-        router.push('/teams');
+      createTeams(payload).then(() => {
+        router.push('/teamRoster');
       });
     }
   };
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update a' : 'Add a'} Player</h2>
+      <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update a' : 'Add a'} Team</h2>
       {/* Name */}
-      <FloatingLabel controlId="floatingInput1" label="Name" className="mb-3">
+      <FloatingLabel controlId="floatingInput1" label="Team Name" className="mb-3">
         <Form.Control
           type="text"
           placeholder="Enter Name"
-          name="name"
-          value={formInput.name}
+          name="teamname"
+          value={formInput.teamname}
           onChange={handleChange}
           required
         />
       </FloatingLabel>
-      {/* Last Name */}
-      <FloatingLabel controlId="floatingInput2" label="Position" className="mb-3">
+      {/* Image */}
+      <FloatingLabel controlId="floatingInput2" label="Image" className="mb-3">
         <Form.Control
           type="text"
-          placeholder="Player Position"
-          name="position"
-          value={formInput.position}
+          placeholder="Image"
+          name="image"
+          value={formInput.image}
           onChange={handleChange}
           required
         />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingInput3" label="imageUrl" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Upload Image"
-          name="imageUrl"
-          value={formInput.imageUrl}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
-
       {/* A WAY TO HANDLE UPDATES FOR TOGGLES, RADIOS, ETC  */}
       <Form.Check
         className="text-white mb-3"
@@ -90,22 +76,21 @@ function PlayerForm({ obj }) {
           favorite: e.target.checked,
         }))}
       />
-      <Button type="submit">{obj.firebaseKey ? 'Update a' : 'Add a'} Player</Button>
+      <Button type="submit">{obj.firebaseKey ? 'Update a' : 'Add a'} Team</Button>
     </Form>
   );
 }
 
-PlayerForm.propTypes = {
+TeamForm.propTypes = {
   obj: PropTypes.shape({
-    name: PropTypes.string,
-    position: PropTypes.string,
-    imageUrl: PropTypes.string,
+    teamname: PropTypes.string,
+    image: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
 };
 
-PlayerForm.defaultProps = {
+TeamForm.defaultProps = {
   obj: initalState,
 };
 
-export default PlayerForm;
+export default TeamForm;

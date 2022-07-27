@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import {
-  Navbar, Container, Nav,
+  Navbar, Container, Nav, Form, Button,
 } from 'react-bootstrap';
 
 export default function NavBar() {
@@ -20,14 +20,23 @@ export default function NavBar() {
               <Nav.Link>HOME</Nav.Link>
             </Link>
             <Link passHref href="/teams">
-              <Nav.Link>TEAM</Nav.Link>
+              <Nav.Link>PLAYERS</Nav.Link>
             </Link>
-            <Link passHref href="/team/new">
+            <Link passHref href="/teamz/new">
               <Nav.Link>NEW</Nav.Link>
             </Link>
             <Link passHref href="/profile">
               <Nav.Link>Profile</Nav.Link>
             </Link>
+            <Form className="d-flex">
+              <Form.Control
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                aria-label="Search"
+              />
+              <Button variant="outline-success">Search</Button>
+            </Form>
           </Nav>
         </Navbar.Collapse>
       </Container>
