@@ -16,13 +16,18 @@ export default function PlayerCard({ playerObj, onUpdate }) {
       <Card style={{ width: '18rem', margin: '10px' }}>
         <div>name: {playerObj.name}</div>
         <div>position: {playerObj.position}</div>
-        <div>position: {playerObj.imageUrl}</div>
-        <Link href={`/team/edit/${playerObj.firebaseKey}`} passHref>
-          <Button variant="info">UPDATE</Button>
-        </Link>
-        <Button variant="danger" onClick={deleteThisPlayer} className="m-2">
-          DELETE
-        </Button>
+        <Card.Img variant="top" src={playerObj.imageUrl} alt={playerObj.name} style={{ height: '300px' }} />
+        <Card.Body>
+          <Link href={`/players/${playerObj.firebaseKey}`} passHref>
+            <Button variant="primary" className="m-2">VIEW</Button>
+          </Link>
+          <Link href={`/players/edit/${playerObj.firebaseKey}`} passHref>
+            <Button variant="info">UPDATE</Button>
+          </Link>
+          <Button variant="danger" onClick={deleteThisPlayer} className="m-2">
+            DELETE
+          </Button>
+        </Card.Body>
       </Card>
     </>
   );

@@ -19,7 +19,7 @@ export default function ViewPlayer() {
       <Card style={{ width: '18rem', margin: '10px' }}>
         <div>name: {playerDetails.name}</div>
         <div>position: {playerDetails.position}</div>
-        <div>imageUrl: {playerDetails.imageUrl}</div>
+        <Card.Img variant="top" src={playerDetails.imageUrl} alt={playerDetails.name} style={{ height: '300px' }} />
         <Link passHref href="/teams">
           <Button variant="info">Back to Team</Button>
         </Link>
