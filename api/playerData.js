@@ -36,6 +36,11 @@ const deleteSinglePlayer = (firebaseKey, uid) => new Promise((resolve, reject) =
     })
     .catch((error) => reject(error));
 });
+const deletePlayer = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/players/${firebaseKey}.json`)
+    .then(() => resolve('deleted'))
+    .catch((error) => reject(error));
+});
 
 // FIXME: UPDATE PLAYER
 const updatePlayer = (playerObject) => new Promise((resolve, reject) => {
@@ -55,4 +60,5 @@ export {
   deleteSinglePlayer,
   updatePlayer,
   createPlayer,
+  deletePlayer,
 };

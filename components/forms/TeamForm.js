@@ -1,5 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
@@ -10,6 +11,7 @@ import { useAuth } from '../../utils/context/authContext';
 const initalState = {
   teamname: '',
   image: '',
+  private: true,
 };
 function TeamForm({ obj }) {
   const [formInput, setFormInput] = useState(initalState);
@@ -30,7 +32,7 @@ function TeamForm({ obj }) {
     e.preventDefault();
     if (obj.firebaseKey) {
       updateTeams(formInput)
-        .then(() => router.push(`/teamz/${obj.firebaseKey}`));
+        .then(() => router.push(`/teams/${obj.firebaseKey}`));
     } else {
       const payload = { ...formInput, uid: user.uid };
       createTeams(payload).then(() => {
@@ -39,45 +41,50 @@ function TeamForm({ obj }) {
     }
   };
   return (
-    <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update a' : 'Add a'} Team</h2>
-      {/* Name */}
-      <FloatingLabel controlId="floatingInput1" label="Team Name" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Enter Name"
-          name="teamname"
-          value={formInput.teamname}
-          onChange={handleChange}
-          required
+    <>
+      <Head>
+        <title>ADD TEAM</title>
+        <meta name="description" content="Meta description for the team page" />
+      </Head>
+      <Form onSubmit={handleSubmit}>
+        <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update a' : 'Add a'} Team</h2>
+        {/* Name */}
+        <FloatingLabel controlId="floatingInput1" label="Team Name" className="mb-3">
+          <Form.Control
+            type="text"
+            placeholder="Enter Name"
+            name="teamname"
+            value={formInput.teamname}
+            onChange={handleChange}
+            required
+          />
+        </FloatingLabel>
+        {/* Image */}
+        <FloatingLabel controlId="floatingInput2" label="Image" className="mb-3">
+          <Form.Control
+            type="text"
+            placeholder="Image"
+            name="image"
+            value={formInput.image}
+            onChange={handleChange}
+            required
+          />
+        </FloatingLabel>
+        <Form.Check
+          className="text-white mb-3"
+          type="switch"
+          id="private"
+          name="private"
+          label="Private?"
+          checked={formInput.favorite}
+          onChange={(e) => setFormInput((prevState) => ({
+            ...prevState,
+            private: e.target.checked,
+          }))}
         />
-      </FloatingLabel>
-      {/* Image */}
-      <FloatingLabel controlId="floatingInput2" label="Image" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Image"
-          name="image"
-          value={formInput.image}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
-      {/* A WAY TO HANDLE UPDATES FOR TOGGLES, RADIOS, ETC  */}
-      <Form.Check
-        className="text-white mb-3"
-        type="switch"
-        id="favorite"
-        name="favorite"
-        label="Favorite?"
-        checked={formInput.favorite}
-        onChange={(e) => setFormInput((prevState) => ({
-          ...prevState,
-          favorite: e.target.checked,
-        }))}
-      />
-      <Button type="submit">{obj.firebaseKey ? 'Update a' : 'Add a'} Team</Button>
-    </Form>
+        <Button type="submit">{obj.firebaseKey ? 'Update a' : 'Add a'} Team</Button>
+      </Form>
+    </>
   );
 }
 
