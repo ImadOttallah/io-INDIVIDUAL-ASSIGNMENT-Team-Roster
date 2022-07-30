@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -16,12 +17,16 @@ export default function ViewPlayer() {
 
   return (
     <>
+      <Head>
+        <title>PLAYERS</title>
+        <meta name="description" content="Meta description for the team page" />
+      </Head>
       <Card style={{ width: '18rem', margin: '10px' }}>
         <div>name: {playerDetails.name}</div>
         <div>position: {playerDetails.position}</div>
         <Card.Img variant="top" src={playerDetails.imageUrl} alt={playerDetails.name} style={{ height: '300px' }} />
         <Link passHref href="/teams">
-          <Button variant="info">Back to Team</Button>
+          <Button variant="info">Back to Players</Button>
         </Link>
       </Card>
     </>

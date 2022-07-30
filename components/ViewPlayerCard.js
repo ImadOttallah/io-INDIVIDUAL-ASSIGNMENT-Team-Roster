@@ -3,16 +3,10 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
-import { deleteSinglePlayer } from '../api/playerData';
 import { getSingleTeam } from '../api/teamData';
 
-export default function PlayerCard({ playerObj, onUpdate }) {
+export default function PlayerCard({ playerObj }) {
   const [teamName, setTeamName] = useState({});
-  const deleteThisPlayer = () => {
-    if (window.confirm(`Delete ${playerObj.name}?`)) {
-      deleteSinglePlayer(playerObj.firebaseKey).then(() => onUpdate());
-    }
-  };
   useEffect(() => {
     getSingleTeam(playerObj.teamId).then((response) => {
       setTeamName(response);
@@ -32,9 +26,6 @@ export default function PlayerCard({ playerObj, onUpdate }) {
           <Link href={`/players/edit/${playerObj.firebaseKey}`} passHref>
             <Button variant="info">UPDATE</Button>
           </Link>
-          <Button variant="danger" onClick={deleteThisPlayer} className="m-2">
-            DELETE
-          </Button>
         </Card.Body>
       </Card>
     </>
@@ -49,5 +40,4 @@ PlayerCard.propTypes = {
     imageUrl: PropTypes.string,
     teamId: PropTypes.string,
   }).isRequired,
-  onUpdate: PropTypes.func.isRequired,
 };

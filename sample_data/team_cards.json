@@ -1,13 +1,13 @@
 {
   "-MiBsBKGWFEU-yluJkL-": {
     "teamname": "Cowboys",
-    "teamId": "-MiBsBKGWFEU-yluJkL-",
+    "firebaseKey": "-MiBsBKGWFEU-yluJkL-",
     "image": "https://images-na.ssl-images-amazon.com/images/I/91+NBrXG-PL.jpg",
     "uid": ""
   },
   "-MiBsknNSQ6aBG1-2lQS": {
     "teamname": "Rams",
-    "teamId": "-MiBsknNSQ6aBG1-2lQS",
+    "firebaseKey": "-MiBsknNSQ6aBG1-2lQS",
     "image": "https://images-na.ssl-images-amazon.com/images/I/A1agLFsWkOL.jpg",
     "uid": ""
   }

@@ -49,11 +49,17 @@ const updateTeams = (teamsObject) => new Promise((resolve, reject) => {
 });
 
 // GET A SINGLE TEAMS'S PLAYERS
-const getTeamsPlayers = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/players.json?orderBy="teamId"&equalTo="${firebaseKey}"`)
+const getSingleTeamPlayers = (teamId) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/players.json?orderBy="teamId"&equalTo="${teamId}"`)
     .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
 });
+// const getTeamName = (firebaseKey) => new Promise((resolve, reject) => {
+//   getSingleTeam(firebaseKey).then((team) => {
+//     resolve(team.teamname);
+//   })
+//     .catch((error) => reject(error));
+// });
 
 export {
   getTeams,
@@ -61,5 +67,6 @@ export {
   getSingleTeam,
   deleteSingleTeam,
   updateTeams,
-  getTeamsPlayers,
+  getSingleTeamPlayers,
+  // getTeamName,
 };

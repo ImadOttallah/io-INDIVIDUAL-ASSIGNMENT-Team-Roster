@@ -22,11 +22,11 @@ export default function NavBar() {
             <Link passHref href="/teams">
               <Nav.Link>PLAYERS</Nav.Link>
             </Link>
-            <Link passHref href="/teamz/new">
-              <Nav.Link>NEW</Nav.Link>
+            <Link passHref href="/teamRoster">
+              <Nav.Link>TEAMS</Nav.Link>
             </Link>
             <Link passHref href="/profile">
-              <Nav.Link>Profile</Nav.Link>
+              <Nav.Link>PROFILE</Nav.Link>
             </Link>
             <Form className="d-flex">
               <Form.Control
