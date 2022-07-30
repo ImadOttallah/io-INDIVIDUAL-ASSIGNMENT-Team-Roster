@@ -1,3 +1,7 @@
+This app track players and teams. It allows you to add players and create new teams. The app uses firebase. 
+
+https://snazzy-cat-bc027e.netlify.app - 30 July 2022
+
 # React/Next.js Template
 
 [See Live Demo of this Template](https://drt-next-js-template.netlify.app/)
