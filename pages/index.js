@@ -14,7 +14,7 @@ function Home() {
         <meta name="keywords" content="title, meta, nextjs" />
         <meta name="author" content="Imad Ottallah" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>SPORTS</title>
+        <title>SPORT</title>
       </Head>
       <div
         className="text-center d-flex flex-column justify-content-center align-content-center"
