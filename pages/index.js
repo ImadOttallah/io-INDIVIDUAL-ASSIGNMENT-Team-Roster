@@ -1,10 +1,11 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import { Button } from 'react-bootstrap';
-import { signOut } from '../utils/auth';
-import { useAuth } from '../utils/context/authContext';
+// import { signOut } from '../utils/auth';
+// import { useAuth } from '../utils/context/authContext';
 
 function Home() {
-  const { user } = useAuth();
+  // const { user } = useAuth();
 
   return (
     <>
@@ -24,11 +25,8 @@ function Home() {
           margin: '0 auto',
         }}
       >
-        <h1>Hello {user.displayName}! </h1>
-        <p>Click the button below to logout!</p>
-        <Button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
-          Sign Out
-        </Button>
+        <h1>View Team</h1>
+        <Link passHref href="/teamRoster"><Button variant="primary"> Teams</Button></Link>
       </div>
     </>
   );
